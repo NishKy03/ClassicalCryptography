@@ -1,0 +1,458 @@
+:root {
+    --primary: #3b82f6;
+    --accent: #4f46e5;
+    --danger: #ef4444;
+    --background: #ffffff;
+    --surface: #f8fafc;
+    --surface-hover: #f1f5f9;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --success: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 2rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.version-badge {
+    font-size: 0.7rem;
+    color: #ffffff;
+    background-color: var(--primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.container { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem; 
+    margin-top: 2rem;
+}
+
+.box { 
+    border: 1px solid var(--border); 
+    padding: 1.5rem; 
+    border-radius: 8px;
+    background-color: var(--surface);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+}
+
+/* Box with digital circuit pattern */
+.box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%233b82f620' stroke-width='1' d='M10,10 L90,10 M10,25 L60,25 M60,25 L60,75 M60,75 L25,75 M25,75 L25,40 M25,40 L40,40 M40,40 L40,60 M40,60 L75,60 M75,60 L75,90 M10,90 L75,90'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+textarea { 
+    width: 100%; 
+    height: 120px; 
+    margin-bottom: 1rem; 
+    padding: 0.75rem; 
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    resize: none;
+    transition: all 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+button { 
+    padding: 0.6rem 1rem; 
+    background-color: var(--background); 
+    color: var(--primary); 
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    cursor: pointer; 
+    margin-right: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.85rem;
+}
+
+/* Cyber button effect */
+button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+button:hover::after {
+    opacity: 0.2;
+}
+
+button:hover { 
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button.attack-btn {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+button.attack-btn:hover {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+button.primary-btn {
+    background-color: var(--primary);
+    color: white;
+}
+
+button.primary-btn:hover {
+    background-color: #2563eb;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.result { 
+    margin-top: 1.5rem; 
+    padding: 1rem; 
+    background-color: var(--surface); 
+    border-radius: 4px;
+    border-left: 3px solid var(--primary);
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+.process-steps { 
+    margin-top: 1.5rem; 
+    padding: 1rem; 
+    background-color: var(--surface);
+    border-radius: 4px;
+    border: 1px dashed var(--border);
+}
+
+.process-step { 
+    margin: 0.5rem 0; 
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.shift-control { 
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.shift-control label { 
+    display: inline-block; 
+    width: auto;
+    margin-right: 1rem;
+    margin-bottom: 0;
+}
+
+.shift-control input { 
+    width: 80px; 
+    padding: 0.5rem; 
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+.shift-control input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.alphabet-visualization { 
+    margin: 1.5rem 0; 
+    padding: 1.5rem; 
+    background-color: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    position: relative;
+}
+
+/* Digital circuit background for visualization */
+.alphabet-visualization::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath fill='none' stroke='%233b82f610' stroke-width='1' d='M10,10 L190,10 M10,50 L150,50 M150,50 L150,150 M150,150 L50,150 M50,150 L50,80 M50,80 L100,80 M100,80 L100,120 M100,120 L170,120 M170,120 L170,190 M10,190 L170,190'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.alphabet-row { 
+    display: flex; 
+    justify-content: flex-start; 
+    margin-bottom: 0.75rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.alphabet-row strong {
+    margin-right: 1rem;
+    min-width: 100px;
+    color: var(--text-secondary);
+}
+
+.alphabet-letter { 
+    min-width: 30px; 
+    height: 30px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border: 1px solid var(--border); 
+    margin-right: 2px; 
+    background-color: var(--background);
+    color: var(--accent);
+    font-weight: bold;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.alphabet-letter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.brute-force-results { 
+    margin-top: 1.5rem; 
+    background-color: var(--surface);
+    padding: 1.5rem; 
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+.brute-force-result { 
+    margin: 0.5rem 0; 
+    padding: 0.5rem; 
+    border-bottom: 1px solid var(--border); 
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.85rem;
+}
+
+.brute-force-result:hover {
+    background-color: var(--surface-hover);
+    border-radius: 2px;
+}
+
+.explanation { 
+    margin: 2rem 0; 
+    padding: 1.5rem; 
+    background-color: var(--surface); 
+    border-radius: 8px;
+    border-left: 5px solid var(--accent);
+    font-family: inherit;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Digital background for explanation */
+.explanation::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 150px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='300' viewBox='0 0 150 300'%3E%3Ctext x='10' y='20' font-family='monospace' font-size='10' fill='%233b82f610'%3E01001010%3C/text%3E%3Ctext x='10' y='40' font-family='monospace' font-size='10' fill='%233b82f610'%3E10110011%3C/text%3E%3Ctext x='10' y='60' font-family='monospace' font-size='10' fill='%233b82f610'%3E01010101%3C/text%3E%3Ctext x='10' y='80' font-family='monospace' font-size='10' fill='%233b82f610'%3E11001100%3C/text%3E%3Ctext x='10' y='100' font-family='monospace' font-size='10' fill='%233b82f610'%3E01110001%3C/text%3E%3Ctext x='10' y='120' font-family='monospace' font-size='10' fill='%233b82f610'%3E10101010%3C/text%3E%3Ctext x='10' y='140' font-family='monospace' font-size='10' fill='%233b82f610'%3E00110011%3C/text%3E%3Ctext x='10' y='160' font-family='monospace' font-size='10' fill='%233b82f610'%3E11001100%3C/text%3E%3Ctext x='10' y='180' font-family='monospace' font-size='10' fill='%233b82f610'%3E10011001%3C/text%3E%3Ctext x='10' y='200' font-family='monospace' font-size='10' fill='%233b82f610'%3E01001010%3C/text%3E%3Ctext x='10' y='220' font-family='monospace' font-size='10' fill='%233b82f610'%3E10110011%3C/text%3E%3Ctext x='10' y='240' font-family='monospace' font-size='10' fill='%233b82f610'%3E01110001%3C/text%3E%3Ctext x='10' y='260' font-family='monospace' font-size='10' fill='%233b82f610'%3E10101010%3C/text%3E%3Ctext x='10' y='280' font-family='monospace' font-size='10' fill='%233b82f610'%3E00110011%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.explanation h3 {
+    color: var(--text);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.explanation ul {
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.explanation li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.header-icon {
+    margin-right: 0.75rem;
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+/* Binary badge with glow effect */
+.binary-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.7rem;
+    color: var(--primary);
+    padding: 2px 6px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 3px;
+    background-color: rgba(59, 130, 246, 0.05);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Binary background effect */
+.binary-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.03;
+    pointer-events: none;
+    overflow: hidden;
+    color: var(--text-secondary);
+}
+
+.binary-column {
+    position: absolute;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 14px;
+    animation: fall linear infinite;
+}
+
+/* Digital grid lines on the background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(to right, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .box {
+        min-width: 100%;
+    }
+}
